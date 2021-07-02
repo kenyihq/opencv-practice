@@ -6,7 +6,8 @@ img = cv2.imread('contorno.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 # Capturamos el Umbral de la imagen ('_' variable ficticia)
 _, umbral = cv2.threshold(gray, 100, 255, cv2.THRESH_BINARY)
-
+contorn, jerarquia = cv2.findContours(umbral, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+cv2.drawContours(img, contorn, 1, (255,60,50), 3)
 # Mostramos la imagen en una ventana
 cv2.imshow('Imagen Original', img)
 cv2.imshow('Imagen en grises', gray)
